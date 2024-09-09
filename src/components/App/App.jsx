@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import ContactList from "../ContactList/ContactList.jsx";
 import SearchBox from "../SearchBox/SearchBox.jsx";
+import ContactForm from "../ContactForm/ContactForm.jsx";
 
 // Масив контактів для початкового значення стану
 const initialContactList = [
@@ -11,7 +12,7 @@ const initialContactList = [
 ];
 
 function App() {
-  const [contacts] = useState(initialContactList);
+  const [contacts, setContacts] = useState(initialContactList);
   const [searchTerm, setSearchTerm] = useState("");
 
   // Фільтрація контактів за ім'ям
@@ -21,11 +22,17 @@ function App() {
     );
   }, [searchTerm, contacts]);
 
+  // Функція додавання контакту
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => [...prevContacts, newContact]);
+  };
+
   return (
     <div className="app">
       <h1>Phonebook</h1>
+      <ContactForm onSubmit={addContact} />
       <SearchBox onSearch={setSearchTerm} />
-      <ContactList contacts={filteredContacts} />{" "}
+      <ContactList contacts={filteredContacts} />
     </div>
   );
 }
