@@ -1,11 +1,12 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import css from "./SearchBox.module.css";
 
 function SearchBox({ onSearch }) {
   return (
     <Formik initialValues={{ search: "" }} onSubmit={() => {}}>
       {({ handleChange, values }) => (
-        <Form>
+        <Form className={css.searcForm}>
           <label htmlFor="search">Find contacts by name</label>
           <Field
             name="search"

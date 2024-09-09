@@ -1,3 +1,28 @@
 ul {
   list-style-type: none;
 }
+
+button {
+  display: block;
+  background-color: #ccc4c4;
+  color: rgb(17, 17, 17);
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 10px 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #ffffff; /* Darker coral color on hover */
+}
+
+button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+button:active {
+  background-color: #ffffff; /* Even darker coral color when button is clicked */
+}
