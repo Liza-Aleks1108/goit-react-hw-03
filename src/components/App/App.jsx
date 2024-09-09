@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ContactList from "../ContactList/ContactList.jsx";
+import SearchBox from "../SearchBox/SearchBox.jsx";
 
 // Масив контактів для початкового значення стану
 const initialContactList = [
@@ -11,11 +12,20 @@ const initialContactList = [
 
 function App() {
   const [contacts] = useState(initialContactList);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Фільтрація контактів за ім'ям
+  const filteredContacts = useMemo(() => {
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [searchTerm, contacts]);
 
   return (
     <div className="app">
       <h1>Phonebook</h1>
-      <ContactList contacts={contacts} />
+      <SearchBox onSearch={setSearchTerm} />
+      <ContactList contacts={filteredContacts} />{" "}
     </div>
   );
 }
