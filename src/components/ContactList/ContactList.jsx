@@ -1,10 +1,10 @@
 import Contact from "../Contact/Contact";
 
-function ContactList({ contacts }) {
+function ContactList({ contacts, onDelete }) {
   return (
     <ul>
       {contacts.map((contact) => (
-        <Contact key={contact.id} contact={contact} />
+        <Contact key={contact.id} contact={contact} onDelete={onDelete} />
       ))}
     </ul>
   );

@@ -27,12 +27,19 @@ function App() {
     setContacts((prevContacts) => [...prevContacts, newContact]);
   };
 
+  // Функція видалення контакту
+  const deleteContact = (id) => {
+    setContacts((prevContacts) =>
+      prevContacts.filter((contact) => contact.id !== id)
+    );
+  };
+
   return (
     <div className="app">
       <h1>Phonebook</h1>
       <ContactForm onSubmit={addContact} />
       <SearchBox onSearch={setSearchTerm} />
-      <ContactList contacts={filteredContacts} />
+      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
     </div>
   );
 }
